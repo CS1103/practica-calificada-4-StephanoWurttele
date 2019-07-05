@@ -19,7 +19,7 @@ void maximo(vector<A> &vec,int &a,int &b,A &max){
 
 
 template<typename T>
-void concurrente(vector<T> vec,int numhilos){
+T concurrente(vector<T> vec,int numhilos){
 	int lim_inf[numhilos];
 	int lim_sup[numhilos];
 	vector<thread> hilos={};
@@ -44,7 +44,7 @@ void concurrente(vector<T> vec,int numhilos){
 			max=maximos[i];
 		}
 	}
-	cout<<"Maximo es "<<max<<endl;
+	return max;
 }
 
 
@@ -52,10 +52,14 @@ void concurrente(vector<T> vec,int numhilos){
 int main() {
 	int numhilos=4;
 	vector<int> vec={1,2,3,1,3,4,5,1,4,3,2,8,9};
-	concurrente(vec,numhilos); 	
+	int maximo = concurrente(vec,numhilos);
+	cout<<"Main maximo es: "<<maximo<<endl;
 	vector<float> vec2={13.1,2.13,3.1,1.1,43.1,64.1,53.1,11.1,4.1,3.1,2.1,8.1,9.1};
-	concurrente(vec2,numhilos);
+	float maximo2 = concurrente(vec2,numhilos);
+	cout<<"Main maximo es: "<<maximo2<<endl;
 	vector<double> vec3={15.1,2.1,83.1,1.1,3.1,4.1,5.1,14.1,4.1,3.12,2.19,8.1,93.1};
-	concurrente(vec3,numhilos);
+	double maximo3 = concurrente(vec3,numhilos);
+	cout<<"Main maximo es: "<<maximo3<<endl;
 	return 0;
+	
 }
